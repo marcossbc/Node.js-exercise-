@@ -40,6 +40,11 @@ app.post("/books/", (req, res) => {
   res.status(201).json(newBook)
 
 })
+//Get all 
+app.get("/books", (req, res) => {
+  res.json(books);
+});
+
 //SOO AKHRI BOOKS ID LIKE BOOKS/1
 app.get("/books/:id", (req,res) => {
   const bookId = parseInt(req.params.id);
