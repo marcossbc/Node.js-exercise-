@@ -2,9 +2,15 @@
 const app = express();
 import  express from "express";
 import mongoose from "mongoose";
+
+
 import userRoutes from "./routes/users.js";
 import PostsRoutes from "./routes/posts.js";
 import booksRoutes from "./routes/books.js";
+import AuthRoutes from "./routes/auth.js";
+import DashbourdRoutes from "./routes/admin.js";
+
+
 import  dotenv from "dotenv";
 import {logger} from "./middlewares/logger.js";
 dotenv.config();
@@ -31,6 +37,8 @@ const users =[
 app.use("/users", userRoutes);
 app.use("/posts" ,PostsRoutes)
 app.use("/books", booksRoutes);
+app.use("/auth",  AuthRoutes);
+app.use("/admin", DashbourdRoutes)
 app.get("/", (req,res) => {
   res.json(users);
 })
@@ -38,6 +46,7 @@ app.get("/", (req,res) => {
 /// last route
 app.use(notFound);
 app.use(handle)
+
 //CONNECTING MONGOOSE AND MONGODB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {

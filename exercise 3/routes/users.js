@@ -1,7 +1,7 @@
 
 import express from "express";
 const routes = express.Router()
-import {getUsers,  } from "../controllers/usersController.js"
+import {getUsers  } from "../controllers/usersController.js"
 
 
 
@@ -11,6 +11,7 @@ routes.get("/" ,getUsers)
 // routes.put("/:id", updateUser)
 // routes.delete("/:id", deleteUser)
 // routes.get("/:id", getUserse)
+
 
 
 

@@ -1,4 +1,5 @@
-import  {user }  from "../modules/users.js";
+
+// import  user  from "../modules/users.js";
 // import express from "express";
 export const getUsers = async (req,res) => {
 
@@ -85,3 +86,5 @@ export const createBooks = async (req,res) => {
     res.status(201).json(savedBook)
  
 }
+
+// register user
