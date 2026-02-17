@@ -3,7 +3,7 @@ import { generateToken } from "../utils/generateToken.js";
 
 
  export const registers = async (req, res, next) => {
-    let { name, email, password, role } = req.body;
+    let { name, email, password, role, profile } = req.body;
 
     try{
         email = email.toLowerCase();
@@ -14,7 +14,7 @@ import { generateToken } from "../utils/generateToken.js";
             return res.status(401).json({message:"email horey ayaa loo isticamley wlle"})
         }
 
-          const newUser = await user.create({ name, email, password, role });
+          const newUser = await user.create({ name, email, password, role, profile });
         
             const token = generateToken(newUser._id);
             res.status(201).json({ token });
