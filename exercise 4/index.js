@@ -3,7 +3,7 @@ const app = express();
 import  express from "express";
 import mongoose from "mongoose";
 import helmet from "helmet";
-import { limiter } from "./middlewares/rateLimiter.js";
+// import { limiter } from "./middlewares/rateLimiter.js";
 import { swaggerSpec } from "./utils/swagger.js";
 import swaggerUi from "swagger-ui-express";
 
@@ -35,7 +35,7 @@ app.use(helmet());
 
 
 
-app.use(limiter);
+// app.use(limiter);
 if(process.env.NODE_ENV === "development"){
 
   app.use(morgan("dev"));
@@ -69,7 +69,7 @@ app.use(notFound);
 app.use(handle)
 
 //CONNECTING MONGOOSE AND MONGODB
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect( process.env.NODE_ENV === "development" ? process.env.MONGO_URI_DEV : process.env.MONGO_URI_PRO)
   .then(() => {
     console.log("✅ Connected to MongoDB");
   })
